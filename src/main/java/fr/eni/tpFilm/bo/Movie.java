@@ -7,9 +7,9 @@ import java.util.List;
 
 public class Movie {
 
-	private int idmovie;
+	private int id;
 	private String title;
-	private LocalDate releaseDate;
+	private int releaseDate;
 	private int duration;
 	private String synopsis;
 	private List<Review>reviews = new ArrayList<>();
@@ -20,10 +20,41 @@ public class Movie {
 	public Movie() {
 	}
 		
-	public Movie(int idmovie, String title, LocalDate releaseDate, int duration, String synopsis, List<Review> reviews,
+	public Movie(int id, String title, int releaseDate, int duration) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.releaseDate = releaseDate;
+		this.duration = duration;
+	}
+
+	public Movie(int id, String title, int releaseDate, int duration, String synopsis, Category category) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.releaseDate = releaseDate;
+		this.duration = duration;
+		this.synopsis = synopsis;
+		this.category = category;
+	}
+	
+	public Movie(int id, String title, int releaseDate, int duration, String synopsis, Category category,
+			Participant director, List<Participant> actors) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.releaseDate = releaseDate;
+		this.duration = duration;
+		this.synopsis = synopsis;
+		this.category = category;
+		this.director = director;
+		this.actors = actors;
+	}
+
+	public Movie(int id, String title, int releaseDate, int duration, String synopsis, List<Review> reviews,
 			Category category, Participant director, List<Participant> actors) {
 		super();
-		this.idmovie = idmovie;
+		this.id = id;
 		this.title = title;
 		this.releaseDate = releaseDate;
 		this.duration = duration;
@@ -34,12 +65,12 @@ public class Movie {
 		this.actors = actors;
 	}
 
-	public int getIdmovie() {
-		return idmovie;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdmovie(int idmovie) {
-		this.idmovie = idmovie;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -50,11 +81,11 @@ public class Movie {
 		this.title = title;
 	}
 
-	public LocalDate getReleaseDate() {
+	public int getReleaseDate() {
 		return releaseDate;
 	}
 
-	public void setReleaseDate(LocalDate releaseDate) {
+	public void setReleaseDate(int releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 
@@ -73,7 +104,7 @@ public class Movie {
 	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
 	}
-	
+
 	public List<Review> getReviews() {
 		return reviews;
 	}
@@ -108,9 +139,11 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "Movie [idmovie=" + idmovie + ", title=" + title + ", releaseDate=" + releaseDate + ", duration="
-				+ duration + ", synopsis=" + synopsis + ", reviews=" + reviews + ", category=" + category
-				+ ", director=" + director + ", actors=" + actors + "]";
+		return "Movie [id=" + id + ", title=" + title + ", releaseDate=" + releaseDate + ", duration=" + duration
+				+ ", synopsis=" + synopsis + ", reviews=" + reviews + ", category=" + category + ", director="
+				+ director + ", actors=" + actors + "]";
 	}
+	
+	
 		
 }

@@ -2,39 +2,44 @@ package fr.eni.tpFilm.bo;
 
 public class Review {
 	
-	private int idReview;
+	private int id;
 	private int rating;
 	private String comment;
 	private Movie movie;
-	private Review review;
+	private Member member;
 	
 	public Review() {
 	}
-	
-	public Review(int idReview, int rating, String comment, Movie movie, Review review) {
+
+	public Review(int id, int rating, String comment, Movie movie, Member member) {
 		super();
-		this.idReview = idReview;
+		this.id = id;
 		this.rating = rating;
 		this.comment = comment;
 		this.movie = movie;
-		this.review = review;
+		this.member = member;
 	}
 
-	public int getIdReview() {
-		return idReview;
+	public int getId() {
+		return id;
 	}
-	public void setIdReview(int idReview) {
-		this.idReview = idReview;
+
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	public int getRating() {
 		return rating;
 	}
+
 	public void setRating(int rating) {
 		this.rating = rating;
 	}
+
 	public String getComment() {
 		return comment;
 	}
+
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
@@ -47,19 +52,17 @@ public class Review {
 		this.movie = movie;
 	}
 
-	public Review getReview() {
-		return review;
+	public Member getMember() {
+		return member;
 	}
 
-	public void setReview(Review review) {
-		this.review = review;
+	public void setMember(Member member) {
+		this.member = member;
 	}
 
-	@Override
-	public String toString() {
-		return "Review [idReview=" + idReview + ", rating=" + rating + ", comment=" + comment + ", movie=" + movie
-				+ ", review=" + review + "]";
-	}
+
+	
+	
 
 
 	

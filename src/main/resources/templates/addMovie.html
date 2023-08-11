@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+	<title>Filmotheque</title>
+</head>
+<body>
+	<header th:replace="fragments/header :: nav"></header>
+	<main>
+	
+	<main class="container">
+        <h1>Ajouter un film</h1>
+        <form th:action="@{/add}" method="post">
+            <div class="form-group">
+                <label for="title">Titre</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="releaseDate">Année de sortie</label>
+                <input type="number" class="form-control" id="releaseDate" name="releaseDate" required>
+            </div>
+            <div class="form-group">
+                <label for="duration">Durée</label>
+                <input type="number" class="form-control" id="duration" name="duration" required>
+            </div>
+<!--             <div class="form-group"> -->
+<!--                 <label for="category">Genre</label> -->
+<!--                 <select class="form-control" id="category" name="category" required> -->
+<!--                     <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option> -->
+<!--                 </select> -->
+<!--             </div> -->
+<!--             <div class="form-group"> -->
+<!--                 <label for="synopsis">Synopsis</label> -->
+<!--                 <textarea class="form-control" id="synopsis" name="synopsis" required></textarea> -->
+<!--             </div> -->
+<!--             <div class="form-group"> -->
+<!--                 <label for="director">Réalisateur</label> -->
+<!--                 <select class="form-control" id="director" name="director" required> -->
+<!--                     <option th:each="director : ${directors}" th:value="${director.id}" th:text="${director.firstName + ' ' + director.lastName}"></option> -->
+<!--                 </select> -->
+<!--             </div> -->
+<!--             <div class="form-group"> -->
+<!--                 <label for="actors">Acteurs</label> -->
+<!--                 <select multiple class="form-control" id="actors" name="actors" required> -->
+<!--                     <option th:each="actor : ${actors}" th:value="${actor.id}" th:text="${actor.firstName + ' ' + actor.lastName}"></option> -->
+<!--                 </select> -->
+<!--             </div> -->
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+    </main>
+	
+	
+	
+	
+	</main>
+	<footer></footer>
+</body>
+</html>

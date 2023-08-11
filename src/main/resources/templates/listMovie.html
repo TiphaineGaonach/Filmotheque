@@ -9,9 +9,36 @@
 <body>
 	<header th:replace="fragments/header :: nav"></header>
 
-	<footer>
-	
-	</footer>
+	<main>
+        <h1>Liste des films</h1>
+
+        <table class="table table-hover">
+		  <thead>
+		    <tr>
+		      <th scope="col">Titre</th>
+		      <th scope="col">Année de sortie</th>
+		      <th scope="col">Durée</th>
+		      <th scope="col">Synopsis</th>
+		      <th scope="col"></th>
+		      
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="movie : ${movies}" class="table-active">
+		      <th scope="row" th:text="${movie.title}"></th>
+		      <td th:text="${movie.releaseDate}"></td>
+		      <td th:text="${movie.duration + ' minutes'}"></td>
+		      <td th:text="${movie.synopsis}"></td>
+		      <td>
+				<a th:href="@{/detail/{id}(id=${movie.id})}" class="btn btn-primary btn-sm">Détail</a>
+            </td>
+		    </tr>
+		  </tbody>
+		</table>        
+    </main>
+
+
+	<footer></footer>
 
 </body>
 </html>

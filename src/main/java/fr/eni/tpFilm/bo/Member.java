@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Member {
 
-	private int idMember;
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String mail;
@@ -15,10 +15,9 @@ public class Member {
 	
 	public Member() {
 	}
-	
-	public Member(int idMember, String firstName, String lastName, String mail, String password, boolean isAdmin) {
-		super();
-		this.idMember = idMember;
+
+	public Member(int id, String firstName, String lastName, String mail, String password, boolean isAdmin) {
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.mail = mail;
@@ -26,10 +25,9 @@ public class Member {
 		this.isAdmin = isAdmin;
 	}
 
-	public Member(int idMember, String firstName, String lastName, String mail, String password, boolean isAdmin,
+	public Member(int id, String firstName, String lastName, String mail, String password, boolean isAdmin,
 			List<Review> reviews) {
-		super();
-		this.idMember = idMember;
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.mail = mail;
@@ -38,39 +36,50 @@ public class Member {
 		this.reviews = reviews;
 	}
 
-	public int getIdMember() {
-		return idMember;
+	public int getId() {
+		return id;
 	}
-	public void setIdMember(int idMember) {
-		this.idMember = idMember;
+
+	public void setId(int id) {
+		this.id = id;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public String getMail() {
 		return mail;
 	}
+
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public boolean isAdmin() {
 		return isAdmin;
 	}
+
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
@@ -82,12 +91,7 @@ public class Member {
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
 	}
-
-	@Override
-	public String toString() {
-		return "Member [idMember=" + idMember + ", firstName=" + firstName + ", lastName=" + lastName + ", mail=" + mail
-				+ ", password=" + password + ", isAdmin=" + isAdmin + ", reviews=" + reviews + "]";
-	}
-
+	
+	
 	
 }
