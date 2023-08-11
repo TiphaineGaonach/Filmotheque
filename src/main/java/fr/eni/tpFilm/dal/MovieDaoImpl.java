@@ -18,8 +18,8 @@ public class MovieDaoImpl implements MovieDao {
 	private CategoryDaoImpl categoryDao = new CategoryDaoImpl();
 	private ParticipantDaoImpl participantDao = new ParticipantDaoImpl();
 	private List<Movie> movies;
+	private Movie movie;
     private int nextId = 16; // initial ID for new movies
-
 
     public MovieDaoImpl() {
     	
@@ -105,11 +105,15 @@ public class MovieDaoImpl implements MovieDao {
 	
 	@Override
 	public void addMovie(Movie movie) {
-        movie.setId(nextId); // Assign the next available ID to the movie
-		movies.add(movie);
-        nextId++; // Increment the next available ID for the next movie
+	    movie.setId(nextId); // Assign the next available ID to the movie
+	    Category category = movie.getCategory(); // Get the category from the movie object
+	    if (category != null) { // Check if the category is not null
+	        movie.setCategory(categoryDao.findCategoryById(category.getId())); // Set the category using its ID
+	    }
+	    movies.add(movie);
+	    nextId++; // Increment the next available ID for the next movie
+	    System.err.println(movie);
+	
 	}
-	
-	
 	
 }

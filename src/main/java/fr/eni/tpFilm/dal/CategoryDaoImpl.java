@@ -3,9 +3,12 @@ package fr.eni.tpFilm.dal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import fr.eni.tpFilm.bo.Category;
 
-public class CategoryDaoImpl {
+@Repository
+public class CategoryDaoImpl implements CategoryDao{
 	
 	private List<Category> categories;
 	
@@ -32,6 +35,9 @@ public class CategoryDaoImpl {
 	    return null; // Retourne null si aucune catégorie n'est trouvée avec cet ID
 	}
 	
+	public List<Category> getAllCategories() {
+	    return categories;
+	}
 	
 	
 }

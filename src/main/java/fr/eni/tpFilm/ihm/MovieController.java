@@ -9,15 +9,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.eni.tpFilm.bll.MovieService;
+import fr.eni.tpFilm.bll.CategoryService;
 import fr.eni.tpFilm.bo.Movie;
 
 @Controller
 public class MovieController {
 	
 	private final MovieService movieService;
+	private final CategoryService categoryService;
 
-    public MovieController(MovieService movieService) {
+    public MovieController(MovieService movieService, CategoryService categoryService) {
         this.movieService = movieService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping({ "/", "/list" })
@@ -36,7 +39,7 @@ public class MovieController {
     @GetMapping("/add")
     public String showAddMovieForm(Model model) {
         // Préparez les données nécessaires pour le formulaire, comme les catégories et les réalisateurs
-//        model.addAttribute("categories", categoryService.getAllCategories());
+        model.addAttribute("categories", categoryService.getAllCategories());
 //        model.addAttribute("directors", participantService.getAllDirectors());
 //        model.addAttribute("actors", participantService.getAllActors());
         

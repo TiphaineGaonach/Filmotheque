@@ -16,15 +16,15 @@
                 <div class="card-body">
                     <h5 class="card-title" th:text="${movie.title}"></h5>
                     <p class="card-text"><strong>Année de sortie:</strong> <span th:text="${movie.releaseDate}"></span></p>
-                    <p class="card-text"><strong>Durée:</strong> <span th:text="${movie.duration + ' minutes'}"></span></p>
-                    <p class="card-text"><strong>Synopsis:</strong> <span th:text="${movie.synopsis}"></span></p>
-                	<p class="card-text"><strong>Genre:</strong> <span th:text="${movie.category.label}"></span></p>
-                	<p class="card-text"><strong>Réalisateur:</strong> <span th:text="${movie.director.firstName + ' ' + movie.director.lastName}"></span></p>
-					<p class="card-text"><strong>Acteurs:</strong>
-					    <span th:each="actor, iterStat : ${movie.actors}">
-					        <span th:text="${actor.firstName + ' ' + actor.lastName}"></span>
-					        <span th:unless="${iterStat.last}">- </span>
-					    </span>
+                <p class="card-text"><strong>Durée:</strong> <span th:text="${movie.duration + ' minutes'}"></span></p>
+                <p class="card-text" th:if="${movie.synopsis}"><strong>Synopsis:</strong> <span th:text="${movie.synopsis}"></span></p>
+                <p class="card-text" th:if="${movie.category}"><strong>Genre:</strong> <span th:text="${movie.category.label}"></span></p>
+                <p class="card-text" th:if="${movie.director}"><strong>Réalisateur:</strong> <span th:text="${movie.director.firstName + ' ' + movie.director.lastName}"></span></p>
+                <p class="card-text" th:if="${movie.actors}"><strong>Acteurs:</strong>
+                    <span th:each="actor, iterStat : ${movie.actors}">
+                        <span th:text="${actor.firstName + ' ' + actor.lastName}"></span>
+                        <span th:unless="${iterStat.last}">- </span>
+                    </span>
 					</p>
                 </div>
             </div>

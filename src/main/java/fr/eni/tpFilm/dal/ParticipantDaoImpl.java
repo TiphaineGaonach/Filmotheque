@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import fr.eni.tpFilm.bo.Participant;
 
+@Repository
 public class ParticipantDaoImpl {
 	
 	private List<Participant>participants;
