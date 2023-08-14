@@ -1,16 +1,23 @@
 package fr.eni.tpFilm.bo;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 public class Movie {
 
 	private int id;
+	
+	@NotBlank
 	private String title;
+	 @Min(value = 1900, message = "L'année de sortie est obligatoire et doit être supérieure à 1900")
 	private int releaseDate;
 	private int duration;
+	@Min(value = 20, message = "La longueur minimale du synopsis doit être de 20 caractères.")
+    @Max(value = 250, message = "La longueur maximale du synopsis doit être de 250 caractères.")
 	private String synopsis;
 	private List<Review>reviews = new ArrayList<>();
 	private Category category;

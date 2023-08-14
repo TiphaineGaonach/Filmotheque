@@ -2,6 +2,7 @@ package fr.eni.tpFilm.ihm;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import fr.eni.tpFilm.bll.MovieService;
 import fr.eni.tpFilm.bll.CategoryService;
 import fr.eni.tpFilm.bo.Movie;
+import jakarta.validation.Valid;
+import org.springframework.validation.BindingResult;
+
 
 @Controller
 public class MovieController {
@@ -38,24 +42,27 @@ public class MovieController {
     
     @GetMapping("/add")
     public String showAddMovieForm(Model model) {
-        // Préparez les données nécessaires pour le formulaire, comme les catégories et les réalisateurs
+        // Prépare les données nécessaires pour le formulaire, comme les catégories et les réalisateurs
         model.addAttribute("categories", categoryService.getAllCategories());
 //        model.addAttribute("directors", participantService.getAllDirectors());
 //        model.addAttribute("actors", participantService.getAllActors());
         
-        // Créez une instance de Movie vide pour le formulaire
+        // Crée une instance de Movie vide pour le formulaire
         model.addAttribute("movie", new Movie());
 
         return "addMovie";
     }
 
     @PostMapping("/add")
-    public String addMovie(@ModelAttribute Movie movie) {
-        
-    	// Utilisez le service pour ajouter le film en utilisant les données reçues du formulaire
+    public String addMovie(@Valid @ModelAttribute("movie") Movie movie, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            // S'il y a des erreurs de validation, renvoie l'utilisateur vers le formulaire avec les erreurs
+            return "addMovie";
+        }
+    	// Utilise le service pour ajouter le film en utilisant les données reçues du formulaire
         movieService.addMovie(movie);
         
-        // Redirigez l'utilisateur vers la page de la liste des films après l'ajout
+        // Redirige l'utilisateur vers la page de la liste des films après l'ajout
         return "redirect:/list";
     }
     
